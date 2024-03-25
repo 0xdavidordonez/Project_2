@@ -1,11 +1,11 @@
-## Bitcoin and Lunar cycles trading strategy
+# Bitcoin and Lunar cycles trading strategy
 
 
-# Overview
+## Overview
 
 * We propose the development of an innovative trading app that will showcase an event-driven trading strategy, leveraging the correlation between Bitcoin prices and lunar cycles. Our app will incorporate technical analysis indicators, such as  Bollinger Bands, and moving averages, to enhance the effectiveness of the strategy. Furthermore, we aim to utilize deep learning models in Python to implement and backtest the trading strategy, ensuring its robustness and accuracy.
 
-# Goals
+## Goals
 
 * Develop a user-friendly app with  streamlit, with an interface that allows traders to easily access and utilize our event-driven trading strategy.
 
@@ -15,7 +15,7 @@
 
 
 
-# Bonus
+## Bonus
 
 * Create a NLP chatbot that tells you financial data.
 
