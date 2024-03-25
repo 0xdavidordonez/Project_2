@@ -13,8 +13,7 @@
 
 * Technical Analysis Indicators: Integration of technical analysis indicators such as Bollinger Bands, or moving averages to further refine the trading strategy.
 
-# Specifications
-.
+
 
 # Bonus
 
