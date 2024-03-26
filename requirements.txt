@@ -1,0 +1,5 @@
+streamlit
+plotly
+altair
+numpy 
+OpenAI
