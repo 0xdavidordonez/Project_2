@@ -72,21 +72,23 @@ plot_df['Cumulative_Strategy_Returns'] = (1 + plot_df['Strategy_Returns']).cumpr
 st.write("### Corrected Strategy Performance")
 st.line_chart(plot_df[['Cumulative_Actual_Returns', 'Cumulative_Strategy_Returns']])
 
+st.markdown("## The Machine learning model")
 
-
-st.markdown("""## The Machine learning model and report""")
-
-st.markdown(""" We used the Logistic regression model to create predictions for the trading signals. 
+st.markdown("""
+We used the Logistic Regression model to create predictions for the Moon Phase Strategy.
 """)
 
-st.markdown("""classification_report = 
-|              | precision | recall | f1-score | support |
-|--------------|-----------|--------|----------|---------|
-| -1.0         | 1.00      | 0.45   | 0.62     | 646     |
-| 1.0          | 0.66      | 1.00   | 0.79     | 685     |
-| **accuracy** |           |        | 0.73     | 1331    |
-| **macro avg**| 0.83      | 0.72   | 0.70     | 1331    |
-| **weighted avg**| 0.82   | 0.73   | 0.71     | 1331    |""")
+st.markdown("""
+# Classification Report
+| | precision | recall | f1-score | support |
+|---|---|---|---|---|
+| **-1.0** | 1.00 | 0.45 | 0.62 |
+| **1.0** | 0.66 | 1.00 | 0.79 |
+| **accuracy** | 0.73 | 0.73 | 0.73 |
+| **macro avg** | 0.83 | 0.72 | 0.70 |
+| **weighted avg** | 0.82 | 0.73 | 0.71 |
+""")
+
 
 
 
