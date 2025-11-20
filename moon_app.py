@@ -74,8 +74,6 @@ st.line_chart(plot_df[['Cumulative_Actual_Returns', 'Cumulative_Strategy_Returns
 
 st.markdown("## The Machine learning model")
 
-st.markdown("## The Machine learning model")
-
 st.markdown("""
 We used the Logistic Regression model to create predictions for the Moon Phase Strategy.
 """)
@@ -90,6 +88,7 @@ st.markdown("""
 | **macro avg** | 0.83 | 0.72 | 0.70 |
 | **weighted avg** | 0.82 | 0.73 | 0.71 |
 """)
+
 
 
 
