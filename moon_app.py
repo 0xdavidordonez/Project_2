@@ -39,16 +39,19 @@ Our primary objective with the Moon App is to provide traders with a sophisticat
 
 st.markdown("## Our strategies")
 
-st.markdown(""" We created two trading strategies, one using Bollinger bands, and another using Moon phases... specifically using New moon and full moons. We preprocessed the data and applied machine learning models to determine their accuracy and feasability. 
+st.markdown("""
+We created two trading strategies, one using Bollinger bands, and another using Moon phases... 
+specifically using New Moon and full moons. We preprocessed the data and applied machine learning models 
+to determine their accuracy and feasibility.
+""")
 
-# -----------------------------------------------------------------------------
-# REPLACEMENT CODE: Calculates the corrected strategy live
-# -----------------------------------------------------------------------------
+st.markdown("## Bitcoin + Bollinger Bands")
 
-st.markdown("### Corrected Strategy (Live Calculation)")
-st.write("We fixed the look-ahead bias by shifting the signal 1 day forward.")
+# ---------------------------------------------------------
+# CORRECTED STRATEGY LOGIC (No Look-Ahead Bias)
+# ---------------------------------------------------------
 
-# 1. Generate Signals (Vectorized)
+# 1. Generate Signals
 # Initialize Signal column
 btc_df['Signal'] = 0.0
 
@@ -58,20 +61,24 @@ btc_df.loc[btc_df['Close'] < btc_df['BB_LOWER'], 'Signal'] = 1.0
 # Sell (-1.0) when Close is above Upper Band
 btc_df.loc[btc_df['Close'] > btc_df['BB_UPPER'], 'Signal'] = -1.0
 
-# 2. Shift the Signal (THE FIX)
-# We shift by 1 to trade on the NEXT day's open. 
-# This removes the "fake" parabolic returns.
+# 2. Shift the Signal (THE CRITICAL FIX)
+# We shift by 1 to trade on the NEXT day's open.
 btc_df['Position'] = btc_df['Signal'].shift(1)
 
 # 3. Calculate Returns
 btc_df['actual_returns'] = btc_df['Close'].pct_change()
 btc_df['strategy_returns'] = btc_df['actual_returns'] * btc_df['Position']
 
-# 4. Calculate Cumulative Returns
-# Drop NaNs to prevent calculation errors
+# 4. Calculate Cumulative Returns for the Chart
+# Drop NaNs to prevent calculation errors at the start
 plot_df = btc_df.dropna()
 plot_df['Cumulative Actual Returns'] = (1 + plot_df['actual_returns']).cumprod()
 plot_df['Cumulative Algorithm Returns'] = (1 + plot_df['strategy_returns']).cumprod()
+
+# 5. Plot the Chart
+st.write("### Cumulative Returns: Actual vs Algorithm")
+st.line_chart(plot_df[['Cumulative Actual Returns', 'Cumulative Algorithm Returns']])
+
 
 # 5. Plot the Live Chart
 st.line_chart(plot_df[['Cumulative Actual Returns', 'Cumulative Algorithm Returns']])
